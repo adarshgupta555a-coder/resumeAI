@@ -89,7 +89,7 @@ router.post("/query", async (req, res) => {
         // console.log(fileData.rows)
         // console.log(fileData.rows)
         const chunks = JSON.parse(fileData.rows[0].filedata)
-        console.log(chunks)
+        // console.log(chunks)
 
         const documents = await chunks.map(
             chunk => new Document({ pageContent: chunk })
@@ -108,7 +108,7 @@ router.post("/query", async (req, res) => {
         let result = await retrieve.invoke(query);
         result = result.map(item => item.pageContent).join("\n\n");
         // console.log(result[0]);
-        console.log(result)
+        // console.log(result)
         const response = await model.invoke(`
       You are a helpful career assistant.
 
@@ -166,7 +166,7 @@ router.post("/resume", upload.single("document"), async (req, res) => {
         );
 
         console.log(client_id);
-        console.log(chunks)
+        // console.log(chunks)
         const result = await pool.query(
             `
             insert into resume(client_id, filedata) values($1, $2) returning *
