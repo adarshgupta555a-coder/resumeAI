@@ -7,7 +7,7 @@ import axios from 'axios';
 const HomePage = () => {
   const { user, isLoaded, isSignedIn } = useUser();
   const [verify, setVerify] = useState(false);
-  const PORT = import.meta.env.BACKEND_PORT;
+  const PORT = import.meta.env.VITE_BACKEND_PORT;
 
   useEffect(() => {
     if (isSignedIn) getVerify();

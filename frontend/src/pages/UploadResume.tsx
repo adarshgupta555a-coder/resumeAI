@@ -11,7 +11,7 @@ const UploadForm = () => {
   const [uploadState, setUploadState] = useState<UploadState>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-  const PORT = import.meta.env.BACKEND_PORT;
+  const PORT = import.meta.env.VITE_BACKEND_PORT;
   const { user } = useUser();
 
   const handleFile = (f: File | null) => {
