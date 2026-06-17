@@ -7,6 +7,7 @@ import axios from 'axios';
 const HomePage = () => {
   const { user, isLoaded, isSignedIn } = useUser();
   const [verify, setVerify] = useState(false);
+  const PORT = import.meta.env.BACKEND_PORT;
 
   useEffect(() => {
     if (isSignedIn) getVerify();
@@ -14,7 +15,7 @@ const HomePage = () => {
 
   const getVerify = async () => {
     try {
-      const res = await axios.get(`http://localhost:8000/api/user/verify/${user?.id}`);
+      const res = await axios.get(`${PORT}/api/user/verify/${user?.id}`);
       if (res.data.message === 'user id is not found.') {
         setVerify(false);
         return;

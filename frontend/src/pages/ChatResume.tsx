@@ -16,6 +16,7 @@ const ChatResume = () => {
   const userId = user?.id;
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const PORT = import.meta.env.BACKEND_PORT;
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -30,7 +31,7 @@ const ChatResume = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:8000/api/user/query', {
+      const res = await axios.post(`${PORT}/api/user/query`, {
         userId,
         query: trimmed,
       });

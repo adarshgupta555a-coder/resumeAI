@@ -11,6 +11,7 @@ const UploadForm = () => {
   const [uploadState, setUploadState] = useState<UploadState>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+  const PORT = import.meta.env.BACKEND_PORT;
   const { user } = useUser();
 
   const handleFile = (f: File | null) => {
@@ -54,7 +55,7 @@ const UploadForm = () => {
     formData.append("client_id", user.id);
 
     try {
-      await axios.post("http://localhost:8000/api/user/resume", formData);
+      await axios.post(`${PORT}/api/user/resume`, formData);
       setUploadState("success");
     } catch (err) {
       console.error(err);
