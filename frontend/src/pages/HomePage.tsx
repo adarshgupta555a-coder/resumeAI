@@ -1,4 +1,4 @@
-import { useUser } from '@clerk/react';
+import { Show, SignInButton, useUser } from '@clerk/react';
 import ChatResume from './ChatResume';
 import UploadForm from './UploadResume';
 import { useEffect, useState } from 'react';
@@ -50,9 +50,12 @@ const HomePage = () => {
         <p className="text-slate-400 text-sm mb-6 text-center">
           Create an account or sign in to access your resume assistant
         </p>
-        <button className="px-6 py-2.5 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-sm font-medium transition-colors">
+        <Show when="signed-out" >
+          <SignInButton  />
+        </Show>
+        {/* <button className="px-6 py-2.5 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-sm font-medium transition-colors">
           Sign in
-        </button>
+        </button> */}
       </div>
     );
   }
